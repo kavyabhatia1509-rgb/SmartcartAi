@@ -12,8 +12,307 @@ from sklearn.metrics.pairwise import cosine_similarity
 st.set_page_config(
     page_title="SmartCart AI",
     page_icon="🛒",
-    layout="wide"
+    layout="wide",
+    initial_sidebar_state="collapsed"
 )
+
+
+# ============================================================
+# CUSTOM DESIGN
+# ============================================================
+
+st.markdown("""
+<style>
+
+    /* ==============================
+       GLOBAL
+       ============================== */
+
+    .stApp {
+        background: #f6f7fb;
+    }
+
+    .block-container {
+        max-width: 1250px;
+        padding-top: 1.5rem;
+        padding-bottom: 3rem;
+    }
+
+    /* Hide Streamlit default elements */
+    #MainMenu {
+        visibility: hidden;
+    }
+
+    footer {
+        visibility: hidden;
+    }
+
+    /* ==============================
+       HERO SECTION
+       ============================== */
+
+    .hero {
+        background: linear-gradient(
+            135deg,
+            #111827 0%,
+            #1f2937 55%,
+            #374151 100%
+        );
+
+        padding: 42px 45px;
+        border-radius: 28px;
+        margin-bottom: 28px;
+        color: white;
+        box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+    }
+
+    .hero-badge {
+        display: inline-block;
+        background: rgba(255,255,255,0.12);
+        padding: 7px 14px;
+        border-radius: 30px;
+        font-size: 13px;
+        margin-bottom: 18px;
+    }
+
+    .hero-title {
+        font-size: 44px;
+        font-weight: 800;
+        margin: 0;
+        letter-spacing: -1px;
+    }
+
+    .hero-subtitle {
+        font-size: 18px;
+        margin-top: 12px;
+        opacity: 0.82;
+        max-width: 700px;
+        line-height: 1.6;
+    }
+
+    .hero-small {
+        margin-top: 22px;
+        font-size: 14px;
+        opacity: 0.7;
+    }
+
+    /* ==============================
+       SECTION HEADINGS
+       ============================== */
+
+    .section-title {
+        font-size: 27px;
+        font-weight: 750;
+        color: #111827;
+        margin-top: 15px;
+        margin-bottom: 5px;
+    }
+
+    .section-subtitle {
+        color: #6b7280;
+        font-size: 15px;
+        margin-bottom: 20px;
+    }
+
+    /* ==============================
+       STAT CARDS
+       ============================== */
+
+    .stat-card {
+        background: white;
+        padding: 20px;
+        border-radius: 18px;
+        border: 1px solid #e5e7eb;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    }
+
+    .stat-icon {
+        font-size: 25px;
+    }
+
+    .stat-number {
+        font-size: 25px;
+        font-weight: 750;
+        color: #111827;
+        margin-top: 4px;
+    }
+
+    .stat-label {
+        color: #6b7280;
+        font-size: 13px;
+    }
+
+    /* ==============================
+       FILTER PANEL
+       ============================== */
+
+    .filter-panel {
+        background: white;
+        padding: 24px;
+        border-radius: 22px;
+        border: 1px solid #e5e7eb;
+        box-shadow: 0 5px 18px rgba(0,0,0,0.04);
+        margin-top: 20px;
+        margin-bottom: 28px;
+    }
+
+    .filter-title {
+        font-size: 19px;
+        font-weight: 700;
+        color: #111827;
+        margin-bottom: 3px;
+    }
+
+    .filter-description {
+        font-size: 13px;
+        color: #6b7280;
+        margin-bottom: 15px;
+    }
+
+    /* ==============================
+       PRODUCT CARDS
+       ============================== */
+
+    .product-card {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 22px;
+        padding: 22px;
+        min-height: 285px;
+        box-shadow: 0 5px 18px rgba(0,0,0,0.045);
+        transition: 0.2s ease;
+        margin-bottom: 15px;
+    }
+
+    .product-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+    }
+
+    .product-icon {
+        font-size: 36px;
+        margin-bottom: 12px;
+    }
+
+    .product-category {
+        color: #6b7280;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        font-weight: 600;
+    }
+
+    .product-name {
+        font-size: 19px;
+        font-weight: 750;
+        color: #111827;
+        margin-top: 5px;
+        margin-bottom: 12px;
+    }
+
+    .product-price {
+        font-size: 22px;
+        font-weight: 800;
+        color: #111827;
+    }
+
+    .score-pill {
+        display: inline-block;
+        background: #f0fdf4;
+        color: #15803d;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 700;
+        margin-top: 12px;
+    }
+
+    .product-id {
+        color: #9ca3af;
+        font-size: 11px;
+        margin-top: 10px;
+    }
+
+    /* ==============================
+       AI MESSAGE
+       ============================== */
+
+    .ai-message {
+        background: white;
+        border-left: 4px solid #111827;
+        padding: 18px 20px;
+        border-radius: 14px;
+        margin-bottom: 22px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+        color: #374151;
+    }
+
+    .ai-label {
+        font-weight: 750;
+        color: #111827;
+        margin-bottom: 5px;
+    }
+
+    /* ==============================
+       EXPLANATION BOX
+       ============================== */
+
+    .explanation {
+        background: #f9fafb;
+        border-radius: 12px;
+        padding: 11px 13px;
+        margin-top: 13px;
+        color: #6b7280;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    /* ==============================
+       INFO CARDS
+       ============================== */
+
+    .info-card {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 20px;
+        padding: 24px;
+        margin-bottom: 15px;
+        min-height: 155px;
+    }
+
+    .info-icon {
+        font-size: 28px;
+    }
+
+    .info-title {
+        font-size: 17px;
+        font-weight: 700;
+        margin-top: 8px;
+        color: #111827;
+    }
+
+    .info-text {
+        font-size: 13px;
+        color: #6b7280;
+        line-height: 1.6;
+        margin-top: 7px;
+    }
+
+    /* ==============================
+       FOOTER
+       ============================== */
+
+    .footer {
+        text-align: center;
+        color: #9ca3af;
+        font-size: 12px;
+        padding-top: 30px;
+        padding-bottom: 10px;
+    }
+
+</style>
+""", unsafe_allow_html=True)
 
 
 # ============================================================
@@ -171,7 +470,9 @@ interaction_weights = {
 }
 
 df_interactions["weight"] = (
-    df_interactions["interaction"].map(interaction_weights)
+    df_interactions["interaction"].map(
+        interaction_weights
+    )
 )
 
 
@@ -367,45 +668,156 @@ def shopping_agent(
 
 
 # ============================================================
-# NAVIGATION TABS
+# HELPER FUNCTIONS FOR UI
+# ============================================================
+
+def get_category_icon(category):
+
+    icons = {
+        "Laptop": "💻",
+        "Smartphone": "📱",
+        "Headphones": "🎧",
+        "Keyboard": "⌨️",
+        "Mouse": "🖱️",
+        "Monitor": "🖥️"
+    }
+
+    return icons.get(category, "🛍️")
+
+
+# ============================================================
+# HERO SECTION
+# ============================================================
+
+st.markdown("""
+<div class="hero">
+
+    <div class="hero-badge">
+        ✦ AI-Powered Shopping Intelligence
+    </div>
+
+    <div class="hero-title">
+        SmartCart AI
+    </div>
+
+    <div class="hero-subtitle">
+        Your intelligent shopping companion.
+        Discover personalized products based on
+        your interests, shopping behavior and budget.
+    </div>
+
+    <div class="hero-small">
+        Machine Learning • Personalization • Intelligent Decision Making
+    </div>
+
+</div>
+""", unsafe_allow_html=True)
+
+
+# ============================================================
+# QUICK STATS
+# ============================================================
+
+stat1, stat2, stat3, stat4 = st.columns(4)
+
+with stat1:
+    st.markdown("""
+    <div class="stat-card">
+        <div class="stat-icon">🛍️</div>
+        <div class="stat-number">30</div>
+        <div class="stat-label">Products</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with stat2:
+    st.markdown("""
+    <div class="stat-card">
+        <div class="stat-icon">👥</div>
+        <div class="stat-number">5</div>
+        <div class="stat-label">Sample Users</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with stat3:
+    st.markdown("""
+    <div class="stat-card">
+        <div class="stat-icon">🧠</div>
+        <div class="stat-number">ML</div>
+        <div class="stat-label">Recommendation Engine</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with stat4:
+    st.markdown("""
+    <div class="stat-card">
+        <div class="stat-icon">⚡</div>
+        <div class="stat-number">AI</div>
+        <div class="stat-label">Shopping Agent</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+
+st.write("")
+
+
+# ============================================================
+# NAVIGATION
 # ============================================================
 
 home_tab, learn_tab, activity_tab, help_tab = st.tabs(
     [
-        "🏠 Home",
-        "📚 Learn More",
+        "🛒 Shop",
+        "🧠 How It Works",
         "📊 My Activity",
-        "❓ Help & Support"
+        "❓ Help"
     ]
 )
 
 
 # ============================================================
-# HOME TAB
+# SHOP TAB
 # ============================================================
 
 with home_tab:
 
-    st.title("🛒 SmartCart AI")
-
-    st.subheader(
-        "AI-Powered Personalized Shopping Assistant"
+    st.markdown(
+        '<div class="section-title">Find your next favorite product</div>',
+        unsafe_allow_html=True
     )
 
-    st.write(
-        "SmartCart AI analyzes your previous "
-        "shopping interactions and recommends "
-        "products that match your interests."
+    st.markdown(
+        '<div class="section-subtitle">'
+        'Tell SmartCart AI what you are looking for and let the recommendation engine do the work.'
+        '</div>',
+        unsafe_allow_html=True
     )
 
-    st.divider()
+
+    # --------------------------------------------------------
+    # FILTER PANEL
+    # --------------------------------------------------------
+
+    st.markdown("""
+    <div class="filter-panel">
+
+        <div class="filter-title">
+            🎯 Personalize your search
+        </div>
+
+        <div class="filter-description">
+            Your selections help the shopping agent narrow down the most suitable products.
+        </div>
+
+    </div>
+    """, unsafe_allow_html=True)
+
 
     col1, col2 = st.columns(2)
 
     with col1:
 
         user_id = st.selectbox(
-            "👤 Select User",
+            "👤 Shopping Profile",
             [
                 "U001",
                 "U002",
@@ -418,7 +830,7 @@ with home_tab:
     with col2:
 
         category = st.selectbox(
-            "📂 Select Category",
+            "📂 Product Category",
             [
                 "All",
                 "Laptop",
@@ -430,25 +842,35 @@ with home_tab:
             ]
         )
 
-    budget = st.slider(
-        "💰 Maximum Budget (₹)",
-        min_value=1000,
-        max_value=60000,
-        value=60000,
-        step=1000
-    )
 
-    top_n = st.slider(
-        "🔢 Number of Recommendations",
-        min_value=1,
-        max_value=10,
-        value=5
-    )
+    col3, col4 = st.columns(2)
+
+    with col3:
+
+        budget = st.slider(
+            "💰 Maximum Budget",
+            min_value=1000,
+            max_value=60000,
+            value=60000,
+            step=1000,
+            format="₹%d"
+        )
+
+    with col4:
+
+        top_n = st.slider(
+            "🔢 Number of Recommendations",
+            min_value=1,
+            max_value=10,
+            value=5
+        )
+
 
     st.write("")
 
+
     if st.button(
-        "🤖 Get Recommendations",
+        "✨ Find My Personalized Products",
         use_container_width=True
     ):
 
@@ -461,138 +883,289 @@ with home_tab:
             )
         )
 
-        st.info(
-            "🤖 " + agent_message
+
+        # ----------------------------------------------------
+        # AI RESPONSE
+        # ----------------------------------------------------
+
+        st.markdown(
+            f"""
+            <div class="ai-message">
+
+                <div class="ai-label">
+                    🤖 SmartCart AI
+                </div>
+
+                {agent_message}
+
+            </div>
+            """,
+            unsafe_allow_html=True
         )
 
-        st.subheader(
-            "✨ AI Recommendations"
+
+        st.markdown(
+            '<div class="section-title">✨ Recommended for you</div>',
+            unsafe_allow_html=True
         )
+
+        st.markdown(
+            '<div class="section-subtitle">'
+            'These products were selected using your interaction history, product similarity, category and budget.'
+            '</div>',
+            unsafe_allow_html=True
+        )
+
 
         if len(recommendations) == 0:
 
             st.warning(
-                "No products match your "
-                "selected category and budget."
+                "No products match your selected category and budget. "
+                "Try increasing your budget or selecting another category."
             )
 
         else:
 
-            for _, product in (
-                recommendations.iterrows()
+            # ------------------------------------------------
+            # PRODUCT CARDS
+            # ------------------------------------------------
+
+            for start in range(
+                0,
+                len(recommendations),
+                3
             ):
 
-                st.markdown(
-                    f"### 🛍️ "
-                    f"{product['product_name']}"
-                )
+                row = recommendations.iloc[
+                    start:start + 3
+                ]
 
-                col1, col2, col3 = st.columns(3)
+                columns = st.columns(3)
 
-                with col1:
 
-                    st.write(
-                        f"**Category:** "
-                        f"{product['category']}"
-                    )
+                for col, (_, product) in zip(
+                    columns,
+                    row.iterrows()
+                ):
 
-                with col2:
+                    with col:
 
-                    st.write(
-                        f"**Price:** "
-                        f"₹{product['price']:,}"
-                    )
+                        icon = get_category_icon(
+                            product["category"]
+                        )
 
-                with col3:
+                        st.markdown(
+                            f"""
+                            <div class="product-card">
 
-                    st.write(
-                        f"**AI Score:** "
-                        f"{product['recommendation_score']}"
-                    )
+                                <div class="product-icon">
+                                    {icon}
+                                </div>
 
-                explanation = (
-                    explain_recommendation(
-                        user_id,
-                        product["product_id"]
-                    )
-                )
+                                <div class="product-category">
+                                    {product["category"]}
+                                </div>
 
-                st.info(
-                    f"💡 {explanation}"
-                )
+                                <div class="product-name">
+                                    {product["product_name"]}
+                                </div>
 
-                st.divider()
+                                <div class="product-price">
+                                    ₹{product["price"]:,}
+                                </div>
+
+                                <div class="score-pill">
+                                    ✦ AI Score: {product["recommendation_score"]}
+                                </div>
+
+                                <div class="product-id">
+                                    Product ID: {product["product_id"]}
+                                </div>
+
+                            </div>
+                            """,
+                            unsafe_allow_html=True
+                        )
+
+
+                        explanation = (
+                            explain_recommendation(
+                                user_id,
+                                product["product_id"]
+                            )
+                        )
+
+                        with st.expander(
+                            "💡 Why this product?"
+                        ):
+
+                            st.write(
+                                explanation
+                            )
 
 
 # ============================================================
-# LEARN MORE TAB
+# HOW IT WORKS TAB
 # ============================================================
 
 with learn_tab:
 
-    st.title("📚 How SmartCart AI Works")
-
-    st.write(
-        "SmartCart AI combines machine learning "
-        "with an intelligent decision-making layer "
-        "to create personalized recommendations."
+    st.markdown(
+        '<div class="section-title">🧠 How SmartCart AI Works</div>',
+        unsafe_allow_html=True
     )
 
-    st.subheader("1️⃣ User Interaction Data")
-
-    st.write(
-        "The system records whether a user viewed, "
-        "liked, or purchased a product."
+    st.markdown(
+        '<div class="section-subtitle">'
+        'A simple look at the technology behind your personalized recommendations.'
+        '</div>',
+        unsafe_allow_html=True
     )
 
-    st.subheader("2️⃣ Interaction Weighting")
 
-    st.write(
-        "Different actions have different importance:"
-    )
+    # --------------------------------------------------------
+    # STEP 1
+    # --------------------------------------------------------
 
-    st.write(
-        "👀 Viewed → Weight 1\n\n"
-        "❤️ Liked → Weight 2\n\n"
-        "🛒 Purchased → Weight 3"
-    )
+    col1, col2 = st.columns(2)
 
-    st.subheader("3️⃣ TF-IDF")
+    with col1:
 
-    st.write(
-        "TF-IDF converts product features into "
-        "numerical vectors so that the system "
-        "can compare products."
-    )
+        st.markdown("""
+        <div class="info-card">
 
-    st.subheader("4️⃣ Cosine Similarity")
+            <div class="info-icon">👤</div>
 
-    st.write(
-        "Cosine similarity measures how similar "
-        "two products are based on their features."
-    )
+            <div class="info-title">
+                1. User Interaction
+            </div>
 
-    st.subheader("5️⃣ Personalized Recommendation")
+            <div class="info-text">
+                The system records simulated shopping actions
+                such as viewing, liking and purchasing products.
+            </div>
 
-    st.write(
-        "The system combines product similarity "
-        "with the user's interaction weights to "
-        "calculate a personalized recommendation score."
-    )
+        </div>
+        """, unsafe_allow_html=True)
 
-    st.subheader("6️⃣ Intelligent Shopping Agent")
 
-    st.write(
-        "The shopping agent acts as a decision-making "
-        "layer. It takes the user's selected category "
-        "and budget, gets personalized recommendations "
-        "from the ML model, filters unsuitable products, "
-        "and returns the best available choices."
-    )
+    with col2:
+
+        st.markdown("""
+        <div class="info-card">
+
+            <div class="info-icon">⚖️</div>
+
+            <div class="info-title">
+                2. Interaction Weighting
+            </div>
+
+            <div class="info-text">
+                Different actions receive different importance.
+                Viewed = 1, Liked = 2 and Purchased = 3.
+            </div>
+
+        </div>
+        """, unsafe_allow_html=True)
+
+
+    # --------------------------------------------------------
+    # STEP 2
+    # --------------------------------------------------------
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+
+        st.markdown("""
+        <div class="info-card">
+
+            <div class="info-icon">🔢</div>
+
+            <div class="info-title">
+                3. TF-IDF
+            </div>
+
+            <div class="info-text">
+                TF-IDF converts product feature descriptions
+                into numerical representations that the model
+                can compare.
+            </div>
+
+        </div>
+        """, unsafe_allow_html=True)
+
+
+    with col2:
+
+        st.markdown("""
+        <div class="info-card">
+
+            <div class="info-icon">📐</div>
+
+            <div class="info-title">
+                4. Cosine Similarity
+            </div>
+
+            <div class="info-text">
+                Cosine similarity measures how closely related
+                two products are based on their features.
+            </div>
+
+        </div>
+        """, unsafe_allow_html=True)
+
+
+    # --------------------------------------------------------
+    # STEP 3
+    # --------------------------------------------------------
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+
+        st.markdown("""
+        <div class="info-card">
+
+            <div class="info-icon">🎯</div>
+
+            <div class="info-title">
+                5. Personalized Score
+            </div>
+
+            <div class="info-text">
+                Product similarity is combined with the user's
+                interaction weights to calculate a personalized
+                recommendation score.
+            </div>
+
+        </div>
+        """, unsafe_allow_html=True)
+
+
+    with col2:
+
+        st.markdown("""
+        <div class="info-card">
+
+            <div class="info-icon">🤖</div>
+
+            <div class="info-title">
+                6. Shopping Agent
+            </div>
+
+            <div class="info-text">
+                The shopping agent considers the user's category
+                and budget, filters unsuitable products and
+                presents the best available recommendations.
+            </div>
+
+        </div>
+        """, unsafe_allow_html=True)
+
 
     st.success(
-        "SmartCart AI = Machine Learning "
-        "+ Personalization + Intelligent Decision Making"
+        "SmartCart AI = Machine Learning + Personalization + Intelligent Decision Making"
     )
 
 
@@ -602,10 +1175,21 @@ with learn_tab:
 
 with activity_tab:
 
-    st.title("📊 My Shopping Activity")
+    st.markdown(
+        '<div class="section-title">📊 My Shopping Activity</div>',
+        unsafe_allow_html=True
+    )
+
+    st.markdown(
+        '<div class="section-subtitle">'
+        'Explore the shopping interactions used by SmartCart AI to understand user preferences.'
+        '</div>',
+        unsafe_allow_html=True
+    )
+
 
     activity_user = st.selectbox(
-        "Select User to View Activity",
+        "👤 Select Shopping Profile",
         [
             "U001",
             "U002",
@@ -616,15 +1200,63 @@ with activity_tab:
         key="activity_user"
     )
 
+
     user_activity = df_user_products[
         df_user_products["user_id"]
         == activity_user
     ]
 
-    st.write(
-        "Previous interactions for "
-        f"**{activity_user}**:"
+
+    # Activity summary
+
+    total_interactions = len(
+        user_activity
     )
+
+    purchases = len(
+        user_activity[
+            user_activity["interaction"]
+            == "purchased"
+        ]
+    )
+
+    likes = len(
+        user_activity[
+            user_activity["interaction"]
+            == "liked"
+        ]
+    )
+
+
+    stat1, stat2, stat3 = st.columns(3)
+
+
+    with stat1:
+
+        st.metric(
+            "Total Interactions",
+            total_interactions
+        )
+
+
+    with stat2:
+
+        st.metric(
+            "Products Liked",
+            likes
+        )
+
+
+    with stat3:
+
+        st.metric(
+            "Purchases",
+            purchases
+        )
+
+
+    st.write("")
+
 
     activity_display = user_activity[
         [
@@ -636,6 +1268,7 @@ with activity_tab:
         ]
     ].copy()
 
+
     activity_display.columns = [
         "Product",
         "Category",
@@ -643,6 +1276,7 @@ with activity_tab:
         "Interaction",
         "Weight"
     ]
+
 
     st.dataframe(
         activity_display,
@@ -652,58 +1286,99 @@ with activity_tab:
 
 
 # ============================================================
-# HELP & SUPPORT TAB
+# HELP TAB
 # ============================================================
 
 with help_tab:
 
-    st.title("❓ Help & Support")
-
-    st.subheader(
-        "How do I get recommendations?"
+    st.markdown(
+        '<div class="section-title">❓ Help & Support</div>',
+        unsafe_allow_html=True
     )
 
-    st.write(
-        "1. Select a user.\n"
-        "2. Choose a product category.\n"
-        "3. Set your maximum budget.\n"
-        "4. Choose how many recommendations "
-        "you want.\n"
-        "5. Click **Get Recommendations**."
+    st.markdown(
+        '<div class="section-subtitle">'
+        'Everything you need to understand and use SmartCart AI.'
+        '</div>',
+        unsafe_allow_html=True
     )
 
-    st.subheader(
-        "What does the AI Score mean?"
-    )
 
-    st.write(
-        "The AI Score represents the calculated "
-        "relevance of a product based on similarity "
-        "to products the user previously interacted with."
-    )
+    questions = [
 
-    st.subheader(
-        "Why did I receive a particular recommendation?"
-    )
+        (
+            "🛒",
+            "How do I get recommendations?",
+            "Select a shopping profile, choose a product category, "
+            "set your maximum budget, select the number of recommendations "
+            "and click the recommendation button."
+        ),
 
-    st.write(
-        "SmartCart AI provides an explanation showing "
-        "which previous interaction influenced the "
-        "recommendation."
-    )
+        (
+            "⭐",
+            "What does the AI Score mean?",
+            "The AI Score represents the calculated relevance of a product "
+            "based on its similarity to products previously interacted with "
+            "by the selected user."
+        ),
 
-    st.subheader(
-        "Does the system use my real shopping account?"
-    )
+        (
+            "💡",
+            "Why did I receive a particular recommendation?",
+            "SmartCart AI identifies previous products that influenced "
+            "the recommendation and displays an explanation for each result."
+        ),
 
-    st.write(
-        "No. This academic prototype uses a "
-        "sample dataset containing simulated "
-        "users, products, and interactions."
-    )
+        (
+            "🔒",
+            "Does this use my real shopping account?",
+            "No. This academic prototype uses a simulated dataset containing "
+            "sample users, products and shopping interactions."
+        )
+
+    ]
+
+
+    for icon, question, answer in questions:
+
+        st.markdown(
+            f"""
+            <div class="info-card">
+
+                <div class="info-icon">
+                    {icon}
+                </div>
+
+                <div class="info-title">
+                    {question}
+                </div>
+
+                <div class="info-text">
+                    {answer}
+                </div>
+
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
 
     st.success(
-        "🛒 SmartCart AI is a prototype developed "
-        "for demonstrating personalized "
-        "e-commerce recommendations."
+        "🛒 SmartCart AI is an academic prototype demonstrating "
+        "personalized e-commerce recommendations using machine learning."
     )
+
+
+# ============================================================
+# FOOTER
+# ============================================================
+
+st.markdown("""
+<div class="footer">
+
+    SmartCart AI • Personalized Shopping Assistant
+    <br>
+    Built as an AI/ML academic project
+
+</div>
+""", unsafe_allow_html=True)
