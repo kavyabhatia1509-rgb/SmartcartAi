@@ -321,7 +321,9 @@ def shopping_agent(
     user_id,
     category="All",
     budget=60000,
-    top_n=5
+    top_n=5,
+    purpose="General Use",
+    priority="Overall Quality"
 ):
 
     recommendations = recommend_for_user(
@@ -329,19 +331,209 @@ def shopping_agent(
         30
     )
 
+    # --------------------------------------------------------
+    # CATEGORY FILTER
+    # --------------------------------------------------------
+
     if category != "All":
 
         recommendations = recommendations[
             recommendations["category"] == category
         ]
 
+    # --------------------------------------------------------
+    # BUDGET FILTER
+    # --------------------------------------------------------
+
     recommendations = recommendations[
         recommendations["price"] <= budget
     ]
 
+    # --------------------------------------------------------
+    # PURPOSE BOOST
+    # --------------------------------------------------------
+
+    purpose_keywords = {
+
+        "Study / College": [
+            "student",
+            "programming",
+            "productivity",
+            "office",
+            "lightweight"
+        ],
+
+        "Work / Productivity": [
+            "productivity",
+            "office",
+            "business"
+        ],
+
+        "Gaming": [
+            "gaming",
+            "performance",
+            "mechanical",
+            "rgb"
+        ],
+
+        "Entertainment": [
+            "music",
+            "camera",
+            "display",
+            "entertainment",
+            "bass"
+        ],
+
+        "General Use": []
+    }
+
+    selected_keywords = purpose_keywords.get(
+        purpose,
+        []
+    )
+
+    if selected_keywords:
+
+        def calculate_purpose_score(row):
+
+            text = (
+                str(row["product_name"])
+                + " "
+                + str(row["category"])
+            ).lower()
+
+            product_index = df_products.index[
+                df_products["product_id"]
+                == row["product_id"]
+            ][0]
+
+            feature_text = (
+                df_products.iloc[
+                    product_index
+                ]["features"]
+            ).lower()
+
+            combined_text = text + " " + feature_text
+
+            matches = sum(
+                1
+                for keyword in selected_keywords
+                if keyword in combined_text
+            )
+
+            return matches
+
+        recommendations["purpose_score"] = (
+            recommendations.apply(
+                calculate_purpose_score,
+                axis=1
+            )
+        )
+
+    else:
+
+        recommendations["purpose_score"] = 0
+
+    # --------------------------------------------------------
+    # PRIORITY BOOST
+    # --------------------------------------------------------
+
+    priority_keywords = {
+
+        "Price": [
+            "budget",
+            "wireless",
+            "office"
+        ],
+
+        "Performance": [
+            "performance",
+            "gaming",
+            "5g",
+            "mechanical"
+        ],
+
+        "Portability": [
+            "lightweight",
+            "compact",
+            "wireless"
+        ],
+
+        "Battery": [
+            "battery",
+            "wireless"
+        ],
+
+        "Features": [
+            "camera",
+            "display",
+            "noise cancellation",
+            "rgb",
+            "ai"
+        ],
+
+        "Overall Quality": [
+            "performance",
+            "productivity",
+            "quality"
+        ]
+    }
+
+    selected_priority_keywords = priority_keywords.get(
+        priority,
+        []
+    )
+
+    def calculate_priority_score(row):
+
+        product_index = df_products.index[
+            df_products["product_id"]
+            == row["product_id"]
+        ][0]
+
+        feature_text = (
+            df_products.iloc[
+                product_index
+            ]["features"]
+        ).lower()
+
+        matches = sum(
+            1
+            for keyword in selected_priority_keywords
+            if keyword in feature_text
+        )
+
+        return matches
+
+    recommendations["priority_score"] = (
+        recommendations.apply(
+            calculate_priority_score,
+            axis=1
+        )
+    )
+
+    # --------------------------------------------------------
+    # FINAL SMART SCORE
+    # --------------------------------------------------------
+
+    recommendations["smart_score"] = (
+        recommendations["recommendation_score"]
+        + recommendations["purpose_score"] * 0.5
+        + recommendations["priority_score"] * 0.5
+    )
+
+    recommendations = recommendations.sort_values(
+        by="smart_score",
+        ascending=False
+    )
+
     recommendations = recommendations.head(
         top_n
     )
+
+    # --------------------------------------------------------
+    # NO RESULTS
+    # --------------------------------------------------------
 
     if len(recommendations) == 0:
 
@@ -356,16 +548,15 @@ def shopping_agent(
     response = (
         f"I found {len(recommendations)} "
         f"personalized recommendation(s) "
-        f"based on your previous shopping "
-        f"interactions, selected category, "
-        f"and budget."
+        f"based on your shopping history, "
+        f"shopping purpose, priority and budget."
     )
 
     return recommendations, response
 
 
 # ============================================================
-# NAVIGATION
+# NAVIGATION TABS
 # ============================================================
 
 home_tab, learn_tab, activity_tab, help_tab = st.tabs(
@@ -386,43 +577,21 @@ with home_tab:
 
     st.title("🛒 SmartCart AI")
 
-    st.caption(
-        "AI-Powered Personalized Shopping Assistant"
+    st.subheader(
+        "Your Personalized AI Shopping Assistant"
     )
 
     st.write(
-        "Discover products selected by machine learning "
-        "based on your shopping behaviour, interests, "
-        "category and budget."
+        "Tell SmartCart AI what you are looking for, "
+        "what matters most to you, and your budget. "
+        "The AI will find the most suitable products."
     )
 
     st.divider()
 
-    # Dashboard summary
-
-    col1, col2, col3 = st.columns(3)
-
-    with col1:
-        st.metric(
-            "🛍️ Products",
-            "30"
-        )
-
-    with col2:
-        st.metric(
-            "👤 Demo Users",
-            "5"
-        )
-
-    with col3:
-        st.metric(
-            "🤖 AI Model",
-            "TF-IDF"
-        )
-
-    st.divider()
-
-    st.subheader("🎯 Personalize Your Shopping")
+    # --------------------------------------------------------
+    # USER AND CATEGORY
+    # --------------------------------------------------------
 
     col1, col2 = st.columns(2)
 
@@ -442,7 +611,7 @@ with home_tab:
     with col2:
 
         category = st.selectbox(
-            "📂 Select Category",
+            "📂 What are you shopping for?",
             [
                 "All",
                 "Laptop",
@@ -454,9 +623,46 @@ with home_tab:
             ]
         )
 
-    col3, col4 = st.columns(2)
+    # --------------------------------------------------------
+    # PURPOSE AND PRIORITY
+    # --------------------------------------------------------
 
-    with col3:
+    col1, col2 = st.columns(2)
+
+    with col1:
+
+        purpose = st.selectbox(
+            "🎯 What is your shopping purpose?",
+            [
+                "Study / College",
+                "Work / Productivity",
+                "Gaming",
+                "Entertainment",
+                "General Use"
+            ]
+        )
+
+    with col2:
+
+        priority = st.selectbox(
+            "⭐ What matters most to you?",
+            [
+                "Overall Quality",
+                "Price",
+                "Performance",
+                "Portability",
+                "Battery",
+                "Features"
+            ]
+        )
+
+    # --------------------------------------------------------
+    # BUDGET AND NUMBER OF RECOMMENDATIONS
+    # --------------------------------------------------------
+
+    col1, col2 = st.columns(2)
+
+    with col1:
 
         budget = st.slider(
             "💰 Maximum Budget (₹)",
@@ -466,7 +672,7 @@ with home_tab:
             step=1000
         )
 
-    with col4:
+    with col2:
 
         top_n = st.slider(
             "🔢 Number of Recommendations",
@@ -477,39 +683,62 @@ with home_tab:
 
     st.write("")
 
+    # --------------------------------------------------------
+    # GET RECOMMENDATIONS
+    # --------------------------------------------------------
+
     if st.button(
-        "🤖 Get AI Recommendations",
+        "🤖 Get Smart Recommendations",
         use_container_width=True
     ):
 
-        recommendations, agent_message = shopping_agent(
-            user_id,
-            category,
-            budget,
-            top_n
+        recommendations, agent_message = (
+            shopping_agent(
+                user_id,
+                category,
+                budget,
+                top_n,
+                purpose,
+                priority
+            )
         )
+
+        st.session_state["recommendations"] = recommendations
+        st.session_state["recommendation_user"] = user_id
 
         st.success(
             "🤖 " + agent_message
         )
 
+    # --------------------------------------------------------
+    # DISPLAY RECOMMENDATIONS
+    # --------------------------------------------------------
+
+    if "recommendations" in st.session_state:
+
+        recommendations = st.session_state[
+            "recommendations"
+        ]
+
+        recommendation_user = st.session_state[
+            "recommendation_user"
+        ]
+
+        st.divider()
+
         st.subheader(
-            "✨ Your Personalized Recommendations"
+            "✨ AI Recommended Products"
         )
 
         if len(recommendations) == 0:
 
             st.warning(
-                "No products match your selected "
-                "category and budget. Try increasing "
-                "your budget or selecting another category."
+                "No products match your requirements. "
+                "Try increasing your budget or changing "
+                "your category."
             )
 
         else:
-
-            max_score = recommendations[
-                "recommendation_score"
-            ].max()
 
             for number, (_, product) in enumerate(
                 recommendations.iterrows(),
@@ -540,37 +769,120 @@ with home_tab:
                 with col3:
 
                     st.metric(
-                        "⭐ AI Score",
-                        product["recommendation_score"]
+                        "⭐ SmartCart Score",
+                        round(
+                            product["smart_score"],
+                            2
+                        )
                     )
-
-                if max_score > 0:
-
-                    progress = int(
-                        (
-                            product["recommendation_score"]
-                            / max_score
-                        ) * 100
-                    )
-
-                    st.caption(
-                        "AI Recommendation Strength"
-                    )
-
-                    st.progress(progress)
 
                 with st.expander(
-                    "💡 Why did SmartCart AI recommend this?"
+                    "💡 Why was this recommended?"
                 ):
 
-                    explanation = explain_recommendation(
-                        user_id,
-                        product["product_id"]
+                    explanation = (
+                        explain_recommendation(
+                            recommendation_user,
+                            product["product_id"]
+                        )
                     )
 
                     st.write(explanation)
 
+                    st.write(
+                        f"🎯 **Purpose:** {purpose}"
+                    )
+
+                    st.write(
+                        f"⭐ **Priority:** {priority}"
+                    )
+
                 st.divider()
+
+        # ----------------------------------------------------
+        # COMPARISON SECTION
+        # ----------------------------------------------------
+
+        if len(recommendations) >= 2:
+
+            st.subheader(
+                "⚖️ Compare Recommended Products"
+            )
+
+            st.write(
+                "Select products from the AI recommendations "
+                "to compare them before making your decision."
+            )
+
+            product_options = (
+                recommendations["product_name"]
+                .tolist()
+            )
+
+            selected_products = st.multiselect(
+                "🛍️ Select 2 or 3 products to compare",
+                product_options,
+                default=product_options[:2]
+            )
+
+            if len(selected_products) >= 2:
+
+                comparison = recommendations[
+                    recommendations["product_name"].isin(
+                        selected_products
+                    )
+                ].copy()
+
+                comparison = comparison[
+                    [
+                        "product_name",
+                        "category",
+                        "price",
+                        "recommendation_score",
+                        "purpose_score",
+                        "priority_score",
+                        "smart_score"
+                    ]
+                ]
+
+                comparison.columns = [
+                    "Product",
+                    "Category",
+                    "Price",
+                    "ML Recommendation Score",
+                    "Purpose Match",
+                    "Priority Match",
+                    "SmartCart Score"
+                ]
+
+                st.dataframe(
+                    comparison,
+                    use_container_width=True,
+                    hide_index=True
+                )
+
+                # ------------------------------------------------
+                # AI VERDICT
+                # ------------------------------------------------
+
+                best_product = comparison.loc[
+                    comparison["SmartCart Score"].idxmax()
+                ]
+
+                st.success(
+                    f"🤖 **SmartCart AI Verdict:** "
+                    f"{best_product['Product']} "
+                    f"is the strongest match based on "
+                    f"your selected purpose, priority, "
+                    f"shopping history and budget."
+                )
+
+            else:
+
+                st.info(
+                    "Please select at least 2 products "
+                    "to compare."
+                )
 
 
 # ============================================================
@@ -583,8 +895,8 @@ with learn_tab:
 
     st.write(
         "SmartCart AI combines machine learning, "
-        "personalization and an intelligent decision-making "
-        "layer to create product recommendations."
+        "personalization and intelligent decision-making "
+        "to recommend suitable products."
     )
 
     with st.expander(
@@ -602,12 +914,20 @@ with learn_tab:
     ):
 
         st.write(
-            "Different actions have different importance:"
+            "Different actions have different importance."
         )
 
-        st.write("👀 Viewed → Weight 1")
-        st.write("❤️ Liked → Weight 2")
-        st.write("🛒 Purchased → Weight 3")
+        st.write(
+            "👀 Viewed → Weight 1"
+        )
+
+        st.write(
+            "❤️ Liked → Weight 2"
+        )
+
+        st.write(
+            "🛒 Purchased → Weight 3"
+        )
 
     with st.expander(
         "3️⃣ TF-IDF"
@@ -615,8 +935,7 @@ with learn_tab:
 
         st.write(
             "TF-IDF converts product feature descriptions "
-            "into numerical vectors so that the system "
-            "can compare products."
+            "into numerical vectors."
         )
 
     with st.expander(
@@ -625,36 +944,55 @@ with learn_tab:
 
         st.write(
             "Cosine similarity measures how similar "
-            "two products are based on their features."
+            "different products are based on their features."
         )
 
     with st.expander(
-        "5️⃣ Personalized Recommendation"
+        "5️⃣ Personalization"
     ):
 
         st.write(
-            "The system combines product similarity "
-            "with the user's interaction weights to "
-            "calculate a personalized recommendation score."
+            "The system uses the user's previous "
+            "interactions to understand their interests."
         )
 
     with st.expander(
-        "6️⃣ Intelligent Shopping Agent"
+        "6️⃣ Shopping Purpose & Priority"
     ):
 
         st.write(
-            "The shopping agent acts as a decision-making "
-            "layer. It takes the user's selected category "
-            "and budget, gets personalized recommendations "
-            "from the ML model, filters unsuitable products, "
-            "and returns the best available choices."
+            "The user can specify why they are shopping "
+            "and what matters most to them. These preferences "
+            "help the system adjust the recommendation ranking."
+        )
+
+    with st.expander(
+        "7️⃣ Intelligent Shopping Agent"
+    ):
+
+        st.write(
+            "The shopping agent combines the recommendation "
+            "model with category, budget, purpose and priority "
+            "to select suitable products."
+        )
+
+    with st.expander(
+        "8️⃣ Product Comparison"
+    ):
+
+        st.write(
+            "Users can compare recommended products using "
+            "their price, recommendation score, purpose match, "
+            "priority match and overall SmartCart score."
         )
 
     st.divider()
 
     st.success(
         "🛒 SmartCart AI = Machine Learning "
-        "+ Personalization + Intelligent Decision Making"
+        "+ Personalization "
+        "+ Intelligent Decision Making "
+        "+ Product Comparison"
     )
 
 
@@ -668,7 +1006,7 @@ with activity_tab:
 
     st.caption(
         "Previous interactions used by SmartCart AI "
-        "to personalize recommendations."
+        "to understand user preferences."
     )
 
     activity_user = st.selectbox(
@@ -760,7 +1098,7 @@ with help_tab:
     st.title("❓ Help & Support")
 
     st.write(
-        "Here are some common questions about SmartCart AI."
+        "Find answers to common questions about SmartCart AI."
     )
 
     with st.expander(
@@ -768,47 +1106,64 @@ with help_tab:
     ):
 
         st.write(
-            "1. Select a user.\n"
-            "2. Choose a product category.\n"
-            "3. Set your maximum budget.\n"
-            "4. Choose how many recommendations you want.\n"
-            "5. Click **Get AI Recommendations**."
+            "Select a user, category, shopping purpose, "
+            "priority and maximum budget. Then choose how "
+            "many recommendations you want and click "
+            "**Get Smart Recommendations**."
         )
 
     with st.expander(
-        "What does the AI Score mean?"
+        "What is Shopping Purpose?"
     ):
 
         st.write(
-            "The AI Score represents the calculated "
-            "relevance of a product based on similarity "
-            "to products the user previously interacted with."
+            "Shopping Purpose tells the AI why you need "
+            "the product, such as study, work, gaming "
+            "or entertainment."
         )
 
     with st.expander(
-        "Why did I receive a particular recommendation?"
+        "What is Priority?"
     ):
 
         st.write(
-            "SmartCart AI provides an explanation showing "
-            "which previous interaction influenced the "
-            "recommendation."
+            "Priority tells the AI what matters most to "
+            "you, such as price, performance, portability, "
+            "battery or features."
         )
 
     with st.expander(
-        "Does the system use my real shopping account?"
+        "What is the SmartCart Score?"
     ):
 
         st.write(
-            "No. This academic prototype uses a sample "
-            "dataset containing simulated users, products "
-            "and interactions."
+            "The SmartCart Score combines the original "
+            "ML recommendation score with purpose and "
+            "priority matching."
+        )
+
+    with st.expander(
+        "Can I compare products?"
+    ):
+
+        st.write(
+            "Yes. After receiving recommendations, select "
+            "two or three products and SmartCart AI will "
+            "create a comparison table and provide an AI verdict."
+        )
+
+    with st.expander(
+        "Does the system use a real shopping account?"
+    ):
+
+        st.write(
+            "No. This academic prototype uses simulated "
+            "users, products and shopping interactions."
         )
 
     st.divider()
 
     st.success(
-        "🛒 SmartCart AI is a prototype developed "
-        "for demonstrating personalized "
-        "e-commerce recommendations."
+        "🛒 SmartCart AI is an academic prototype "
+        "for personalized e-commerce recommendations."
     )
