@@ -17,110 +17,365 @@ st.set_page_config(
 
 
 # ============================================================
-# PRODUCT DATA
+# PRODUCT DATA - 100 PRODUCTS
 # ============================================================
 
 products = {
+
     "product_id": [
+
+        # Laptops 001-020
         "P001", "P002", "P003", "P004", "P005",
         "P006", "P007", "P008", "P009", "P010",
         "P011", "P012", "P013", "P014", "P015",
         "P016", "P017", "P018", "P019", "P020",
+
+        # Smartphones 021-040
         "P021", "P022", "P023", "P024", "P025",
-        "P026", "P027", "P028", "P029", "P030"
+        "P026", "P027", "P028", "P029", "P030",
+        "P031", "P032", "P033", "P034", "P035",
+        "P036", "P037", "P038", "P039", "P040",
+
+        # Headphones 041-055
+        "P041", "P042", "P043", "P044", "P045",
+        "P046", "P047", "P048", "P049", "P050",
+        "P051", "P052", "P053", "P054", "P055",
+
+        # Keyboards 056-070
+        "P056", "P057", "P058", "P059", "P060",
+        "P061", "P062", "P063", "P064", "P065",
+        "P066", "P067", "P068", "P069", "P070",
+
+        # Mice 071-085
+        "P071", "P072", "P073", "P074", "P075",
+        "P076", "P077", "P078", "P079", "P080",
+        "P081", "P082", "P083", "P084", "P085",
+
+        # Monitors 086-100
+        "P086", "P087", "P088", "P089", "P090",
+        "P091", "P092", "P093", "P094", "P095",
+        "P096", "P097", "P098", "P099", "P100"
     ],
 
     "product_name": [
+
+        # ---------------- LAPTOPS ----------------
+
         "Acer Aspire 5",
         "Lenovo IdeaPad Slim 5",
         "HP Pavilion 14",
         "ASUS VivoBook 15",
         "Dell Inspiron 15",
+        "Acer Aspire 7",
+        "Lenovo IdeaPad 3",
+        "HP 15s",
+        "ASUS TUF Gaming F15",
+        "Dell Vostro 15",
+        "Lenovo ThinkBook 15",
+        "HP Victus 15",
+        "Acer Swift Go 14",
+        "ASUS ZenBook 14",
+        "Dell Inspiron 14",
+        "Lenovo LOQ Gaming",
+        "HP Envy x360",
+        "Acer Nitro V",
+        "ASUS ROG Strix G16",
+        "Dell G15 Gaming",
+
+        # ---------------- SMARTPHONES ----------------
+
         "Samsung Galaxy A55",
         "OnePlus Nord CE",
         "Google Pixel 8a",
         "Redmi Note 14",
         "Samsung Galaxy S24 FE",
+        "OnePlus 12R",
+        "iPhone 15",
+        "Google Pixel 9",
+        "Samsung Galaxy S23",
+        "Nothing Phone 2a",
+        "Realme 13 Pro",
+        "Vivo V40",
+        "Oppo Reno 12",
+        "Motorola Edge 50",
+        "Redmi Note 13 Pro",
+        "OnePlus Nord 4",
+        "Samsung Galaxy A35",
+        "iQOO Neo 9",
+        "Realme GT 6",
+        "Nothing Phone 2",
+
+        # ---------------- HEADPHONES ----------------
+
         "Sony WH-CH720N",
         "JBL Tune 770NC",
         "Boat Rockerz 550",
         "Anker Soundcore Q20i",
         "Realme Buds Wireless",
+        "Sony WH-1000XM5",
+        "JBL Live 660NC",
+        "Boat Nirvana 751",
+        "Sennheiser HD 450BT",
+        "Anker Soundcore Q30",
+        "OnePlus Bullets Z2",
+        "Noise Air Buds Pro",
+        "JBL Tune 760NC",
+        "Skullcandy Crusher Evo",
+        "Sony WH-XB910N",
+
+        # ---------------- KEYBOARDS ----------------
+
         "Redragon K552 Keyboard",
         "Logitech K380 Keyboard",
         "HP Wireless Keyboard",
         "Cosmic Byte Mechanical Keyboard",
         "Dell Multimedia Keyboard",
+        "Logitech K480 Keyboard",
+        "HP K1500 Keyboard",
+        "Redragon K617 Keyboard",
+        "Logitech MX Keys Mini",
+        "Keychron K2 Keyboard",
+        "Portronics Key5",
+        "Dell KB216 Keyboard",
+        "HP 330 Wireless Keyboard",
+        "Zebronics Zeb-Max Pro",
+        "Ant Esports MK3400",
+
+        # ---------------- MICE ----------------
+
         "Logitech M331 Mouse",
         "HP Wireless Mouse",
         "Dell MS116 Mouse",
         "Redragon Gaming Mouse",
         "Lenovo Wireless Mouse",
+        "Logitech M185 Mouse",
+        "HP X1000 Mouse",
+        "Dell WM126 Mouse",
+        "Logitech G102 Gaming Mouse",
+        "Redragon M711 Mouse",
+        "Razer DeathAdder Essential",
+        "Logitech MX Master 3S",
+        "HP 150 Wireless Mouse",
+        "Portronics Toad Mouse",
+        "Zebronics Zeb Transformer",
+
+        # ---------------- MONITORS ----------------
+
         "LG 24-inch Monitor",
         "Samsung 24-inch Monitor",
         "Acer Nitro Monitor",
         "Lenovo 27-inch Monitor",
-        "Dell 27-inch Monitor"
+        "Dell 27-inch Monitor",
+        "LG UltraGear Gaming Monitor",
+        "Samsung Odyssey G3",
+        "Acer 24-inch IPS Monitor",
+        "BenQ 24-inch Monitor",
+        "ASUS TUF Gaming Monitor",
+        "Dell 24-inch Monitor",
+        "HP 24-inch Monitor",
+        "Lenovo 24-inch Monitor",
+        "LG 27-inch IPS Monitor",
+        "Samsung 27-inch Monitor"
     ],
 
     "category": (
-        ["Laptop"] * 5
-        + ["Smartphone"] * 5
-        + ["Headphones"] * 5
-        + ["Keyboard"] * 5
-        + ["Mouse"] * 5
-        + ["Monitor"] * 5
+        ["Laptop"] * 20
+        + ["Smartphone"] * 20
+        + ["Headphones"] * 15
+        + ["Keyboard"] * 15
+        + ["Mouse"] * 15
+        + ["Monitor"] * 15
     ),
 
     "brand": [
+
+        # Laptops
         "Acer", "Lenovo", "HP", "ASUS", "Dell",
+        "Acer", "Lenovo", "HP", "ASUS", "Dell",
+        "Lenovo", "HP", "Acer", "ASUS", "Dell",
+        "Lenovo", "HP", "Acer", "ASUS", "Dell",
+
+        # Smartphones
         "Samsung", "OnePlus", "Google", "Redmi", "Samsung",
+        "OnePlus", "Apple", "Google", "Samsung", "Nothing",
+        "Realme", "Vivo", "Oppo", "Motorola", "Redmi",
+        "OnePlus", "Samsung", "iQOO", "Realme", "Nothing",
+
+        # Headphones
         "Sony", "JBL", "Boat", "Anker", "Realme",
+        "Sony", "JBL", "Boat", "Sennheiser", "Anker",
+        "OnePlus", "Noise", "JBL", "Skullcandy", "Sony",
+
+        # Keyboards
         "Redragon", "Logitech", "HP", "Cosmic Byte", "Dell",
+        "Logitech", "HP", "Redragon", "Logitech", "Keychron",
+        "Portronics", "Dell", "HP", "Zebronics", "Ant Esports",
+
+        # Mice
         "Logitech", "HP", "Dell", "Redragon", "Lenovo",
-        "LG", "Samsung", "Acer", "Lenovo", "Dell"
+        "Logitech", "HP", "Dell", "Logitech", "Redragon",
+        "Razer", "Logitech", "HP", "Portronics", "Zebronics",
+
+        # Monitors
+        "LG", "Samsung", "Acer", "Lenovo", "Dell",
+        "LG", "Samsung", "Acer", "BenQ", "ASUS",
+        "Dell", "HP", "Lenovo", "LG", "Samsung"
     ],
 
     "price": [
+
+        # Laptops
         55000, 58000, 62000, 52000, 60000,
+        65000, 48000, 45000, 72000, 58000,
+        62000, 68000, 70000, 75000, 57000,
+        78000, 82000, 75000, 125000, 85000,
+
+        # Smartphones
         40000, 25000, 45000, 18000, 55000,
+        42000, 65000, 70000, 52000, 24000,
+        28000, 35000, 32000, 30000, 22000,
+        30000, 27000, 36000, 42000, 40000,
+
+        # Headphones
         8500, 6500, 3500, 4500, 2500,
+        28000, 12000, 5500, 11000, 8000,
+        2000, 3500, 7500, 14000, 18000,
+
+        # Keyboards
         2500, 3500, 1800, 3000, 1500,
+        3000, 900, 2200, 8500, 7500,
+        1800, 1200, 2500, 4000, 2000,
+
+        # Mice
         1200, 1000, 800, 1800, 900,
-        12000, 14000, 18000, 16000, 20000
+        1000, 700, 900, 1800, 2200,
+        2500, 8500, 1300, 800, 1500,
+
+        # Monitors
+        12000, 14000, 18000, 16000, 20000,
+        28000, 22000, 14000, 15000, 25000,
+        15000, 13000, 12500, 19000, 18000
     ],
 
     "features": [
-        "laptop programming student performance",
-        "laptop programming student productivity",
-        "laptop programming office productivity",
-        "laptop student office lightweight",
-        "laptop programming business performance",
-        "smartphone camera display performance",
-        "smartphone 5g performance battery",
-        "smartphone camera ai performance",
-        "smartphone budget battery display",
-        "smartphone camera performance display",
+
+        # ---------------- LAPTOP FEATURES ----------------
+
+        "laptop programming student performance productivity",
+        "laptop programming student productivity lightweight",
+        "laptop programming office productivity student",
+        "laptop student office lightweight productivity",
+        "laptop programming business performance productivity",
+        "laptop programming performance gaming student",
+        "laptop student office productivity budget",
+        "laptop student office productivity lightweight",
+        "laptop gaming performance graphics mechanical",
+        "laptop business office productivity performance",
+        "laptop business programming productivity performance",
+        "laptop gaming performance graphics student",
+        "laptop student programming lightweight productivity",
+        "laptop premium student office lightweight productivity",
+        "laptop programming office performance lightweight",
+        "laptop gaming programming performance graphics",
+        "laptop student office convertible productivity",
+        "laptop gaming performance graphics programming",
+        "laptop gaming performance graphics high performance",
+        "laptop gaming performance graphics productivity",
+
+        # ---------------- SMARTPHONE FEATURES ----------------
+
+        "smartphone camera display performance battery",
+        "smartphone 5g performance battery productivity",
+        "smartphone camera ai performance display",
+        "smartphone budget battery display performance",
+        "smartphone camera performance display premium",
+        "smartphone performance gaming battery 5g",
+        "smartphone camera performance premium ios",
+        "smartphone camera ai performance display premium",
+        "smartphone camera performance display premium",
+        "smartphone budget camera display battery",
+        "smartphone camera portrait battery performance",
+        "smartphone camera display battery performance",
+        "smartphone camera portrait performance battery",
+        "smartphone camera performance battery 5g",
+        "smartphone camera display performance budget",
+        "smartphone performance battery 5g productivity",
+        "smartphone camera battery display 5g",
+        "smartphone gaming performance battery 5g",
+        "smartphone gaming performance display battery",
+        "smartphone camera performance display premium",
+
+        # ---------------- HEADPHONE FEATURES ----------------
+
         "headphones wireless noise cancellation music",
         "headphones wireless noise cancellation bass",
         "headphones wireless gaming music bass",
         "headphones wireless noise cancellation music",
         "headphones wireless music lightweight",
-        "keyboard mechanical gaming programming",
+        "headphones premium wireless noise cancellation music",
+        "headphones wireless noise cancellation music premium",
+        "headphones wireless noise cancellation bass music",
+        "headphones wireless music audio premium",
+        "headphones wireless noise cancellation bass",
+        "headphones wireless music lightweight battery",
+        "headphones wireless noise cancellation music",
+        "headphones wireless noise cancellation bass music",
+        "headphones wireless bass music gaming",
+        "headphones wireless noise cancellation bass premium",
+
+        # ---------------- KEYBOARD FEATURES ----------------
+
+        "keyboard mechanical gaming programming rgb",
         "keyboard wireless compact productivity",
         "keyboard wireless office productivity",
-        "keyboard mechanical gaming rgb",
+        "keyboard mechanical gaming rgb programming",
         "keyboard office multimedia productivity",
+        "keyboard wireless compact productivity office",
+        "keyboard office wired productivity typing",
+        "keyboard mechanical compact gaming rgb",
+        "keyboard wireless premium productivity typing",
+        "keyboard mechanical wireless gaming programming",
+        "keyboard wireless office productivity compact",
+        "keyboard office multimedia typing productivity",
+        "keyboard wireless office productivity typing",
+        "keyboard mechanical gaming rgb performance",
+        "keyboard mechanical gaming programming rgb",
+
+        # ---------------- MOUSE FEATURES ----------------
+
         "mouse wireless office productivity",
         "mouse wireless office laptop",
         "mouse wired office productivity",
         "mouse gaming performance rgb",
         "mouse wireless laptop productivity",
+        "mouse wireless office laptop productivity",
+        "mouse wireless office productivity budget",
+        "mouse wireless office laptop productivity",
+        "mouse gaming performance rgb programming",
+        "mouse gaming performance rgb precision",
+        "mouse gaming performance ergonomic",
+        "mouse wireless premium productivity office",
+        "mouse wireless office productivity laptop",
+        "mouse wireless office productivity compact",
+        "mouse gaming performance rgb precision",
+
+        # ---------------- MONITOR FEATURES ----------------
+
         "monitor display office productivity",
         "monitor display office entertainment",
         "monitor gaming display performance",
         "monitor large display productivity",
-        "monitor large display office productivity"
+        "monitor large display office productivity",
+        "monitor gaming display performance high refresh",
+        "monitor gaming display performance high refresh",
+        "monitor display office productivity ips",
+        "monitor display office productivity color",
+        "monitor gaming display performance high refresh",
+        "monitor display office productivity",
+        "monitor display office productivity",
+        "monitor display office productivity",
+        "monitor large display productivity ips",
+        "monitor large display office entertainment"
     ]
 }
 
@@ -132,28 +387,59 @@ df_products = pd.DataFrame(products)
 # ============================================================
 
 interactions = {
+
     "user_id": [
-        "U001", "U001", "U001",
-        "U002", "U002", "U002",
-        "U003", "U003", "U003",
-        "U004", "U004", "U004",
-        "U005", "U005", "U005"
+
+        # U001
+        "U001", "U001", "U001", "U001", "U001",
+
+        # U002
+        "U002", "U002", "U002", "U002", "U002",
+
+        # U003
+        "U003", "U003", "U003", "U003", "U003",
+
+        # U004
+        "U004", "U004", "U004", "U004", "U004",
+
+        # U005
+        "U005", "U005", "U005", "U005", "U005"
     ],
 
     "product_id": [
-        "P001", "P003", "P016",
-        "P006", "P011", "P012",
-        "P021", "P022", "P025",
-        "P026", "P027", "P029",
-        "P002", "P004", "P018"
+
+        # U001 - laptops / keyboards
+        "P001", "P003", "P016", "P057", "P061",
+
+        # U002 - smartphones / headphones
+        "P021", "P041", "P042", "P026", "P033",
+
+        # U003 - mice / keyboards
+        "P071", "P072", "P075", "P056", "P069",
+
+        # U004 - monitors
+        "P086", "P087", "P089", "P090", "P098",
+
+        # U005 - laptops / productivity
+        "P002", "P004", "P011", "P058", "P082"
     ],
 
     "interaction": [
-        "purchased", "liked", "liked",
-        "purchased", "liked", "viewed",
-        "purchased", "liked", "liked",
-        "purchased", "liked", "viewed",
-        "liked", "viewed", "liked"
+
+        # U001
+        "purchased", "liked", "liked", "viewed", "liked",
+
+        # U002
+        "purchased", "liked", "viewed", "liked", "liked",
+
+        # U003
+        "purchased", "liked", "liked", "viewed", "liked",
+
+        # U004
+        "purchased", "liked", "liked", "viewed", "liked",
+
+        # U005
+        "liked", "viewed", "liked", "liked", "purchased"
     ]
 }
 
@@ -171,8 +457,14 @@ interaction_weights = {
 }
 
 df_interactions["weight"] = (
-    df_interactions["interaction"].map(interaction_weights)
+    df_interactions["interaction"]
+    .map(interaction_weights)
 )
+
+
+# ============================================================
+# MERGE DATA
+# ============================================================
 
 df_user_products = pd.merge(
     df_interactions,
@@ -182,7 +474,7 @@ df_user_products = pd.merge(
 
 
 # ============================================================
-# ML RECOMMENDATION ENGINE
+# TF-IDF MODEL
 # ============================================================
 
 tfidf = TfidfVectorizer()
@@ -191,10 +483,19 @@ tfidf_matrix = tfidf.fit_transform(
     df_products["features"]
 )
 
+
+# ============================================================
+# COSINE SIMILARITY
+# ============================================================
+
 similarity_matrix = cosine_similarity(
     tfidf_matrix
 )
 
+
+# ============================================================
+# RECOMMENDATION FUNCTION
+# ============================================================
 
 def recommend_for_user(user_id, top_n=5):
 
@@ -202,14 +503,21 @@ def recommend_for_user(user_id, top_n=5):
         df_user_products["user_id"] == user_id
     ]
 
-    user_products = user_data["product_id"].tolist()
+    user_products = user_data[
+        "product_id"
+    ].tolist()
 
-    user_weights = user_data["weight"].values
+    user_weights = user_data[
+        "weight"
+    ].values
 
     user_indices = [
+
         df_products.index[
-            df_products["product_id"] == product_id
+            df_products["product_id"]
+            == product_id
         ][0]
+
         for product_id in user_products
     ]
 
@@ -222,25 +530,42 @@ def recommend_for_user(user_id, top_n=5):
         * user_weights[:, None]
     )
 
-    final_scores = weighted_scores.sum(axis=0)
+    final_scores = weighted_scores.sum(
+        axis=0
+    )
 
-    ranked_indices = final_scores.argsort()[::-1]
+    ranked_indices = (
+        final_scores.argsort()[::-1]
+    )
 
     filtered_indices = [
+
         index
+
         for index in ranked_indices
-        if df_products.iloc[index]["product_id"]
-        not in user_products
+
+        if df_products.iloc[index][
+            "product_id"
+        ] not in user_products
     ]
 
     top_indices = filtered_indices[:top_n]
 
-    recommendations = df_products.iloc[
-        top_indices
-    ].copy()
+    recommendations = (
+        df_products.iloc[
+            top_indices
+        ].copy()
+    )
 
-    recommendations["recommendation_score"] = [
-        round(final_scores[index], 2)
+    recommendations[
+        "recommendation_score"
+    ] = [
+
+        round(
+            final_scores[index],
+            2
+        )
+
         for index in top_indices
     ]
 
@@ -256,7 +581,7 @@ def recommend_for_user(user_id, top_n=5):
 
 
 # ============================================================
-# RECOMMENDATION EXPLANATION
+# EXPLANATION FUNCTION
 # ============================================================
 
 def explain_recommendation(
@@ -265,24 +590,34 @@ def explain_recommendation(
 ):
 
     user_data = df_user_products[
-        df_user_products["user_id"] == user_id
+        df_user_products["user_id"]
+        == user_id
     ]
 
-    user_products = user_data["product_id"].tolist()
+    user_products = user_data[
+        "product_id"
+    ].tolist()
 
-    user_weights = user_data["weight"].values
+    user_weights = user_data[
+        "weight"
+    ].values
 
     user_indices = [
+
         df_products.index[
-            df_products["product_id"] == product_id
+            df_products["product_id"]
+            == product_id
         ][0]
+
         for product_id in user_products
     ]
 
-    recommended_index = df_products.index[
-        df_products["product_id"]
-        == recommended_product_id
-    ][0]
+    recommended_index = (
+        df_products.index[
+            df_products["product_id"]
+            == recommended_product_id
+        ][0]
+    )
 
     influence_scores = (
         similarity_matrix[
@@ -295,7 +630,9 @@ def explain_recommendation(
     max_index = influence_scores.argmax()
 
     influencing_product = (
-        user_data.iloc[max_index]["product_name"]
+        user_data.iloc[
+            max_index
+        ]["product_name"]
     )
 
     recommended_product = (
@@ -305,9 +642,9 @@ def explain_recommendation(
     )
 
     return (
-        f"Recommended because you interacted with "
-        f"{influencing_product}, which is similar to "
-        f"{recommended_product}."
+        f"Recommended because you interacted "
+        f"with {influencing_product}, which is "
+        f"similar to {recommended_product}."
     )
 
 
@@ -326,22 +663,33 @@ def shopping_agent(
 
     recommendations = recommend_for_user(
         user_id,
-        30
+        100
     )
 
-    # Category filter
+    # --------------------------------------------------------
+    # CATEGORY FILTER
+    # --------------------------------------------------------
+
     if category != "All":
 
         recommendations = recommendations[
-            recommendations["category"] == category
+            recommendations["category"]
+            == category
         ]
 
-    # Budget filter
+    # --------------------------------------------------------
+    # BUDGET FILTER
+    # --------------------------------------------------------
+
     recommendations = recommendations[
-        recommendations["price"] <= budget
+        recommendations["price"]
+        <= budget
     ]
 
-    # Purpose keywords
+    # --------------------------------------------------------
+    # PURPOSE KEYWORDS
+    # --------------------------------------------------------
+
     purpose_keywords = {
 
         "Study / College": [
@@ -376,17 +724,21 @@ def shopping_agent(
         "General Use": []
     }
 
-    selected_purpose_keywords = purpose_keywords.get(
-        purpose,
-        []
+    selected_purpose_keywords = (
+        purpose_keywords.get(
+            purpose,
+            []
+        )
     )
 
     def purpose_score(row):
 
-        product_index = df_products.index[
-            df_products["product_id"]
-            == row["product_id"]
-        ][0]
+        product_index = (
+            df_products.index[
+                df_products["product_id"]
+                == row["product_id"]
+            ][0]
+        )
 
         feature_text = (
             df_products.iloc[
@@ -396,18 +748,22 @@ def shopping_agent(
 
         return sum(
             1
-            for keyword in selected_purpose_keywords
+            for keyword
+            in selected_purpose_keywords
             if keyword in feature_text
         )
 
-    recommendations["purpose_score"] = (
-        recommendations.apply(
-            purpose_score,
-            axis=1
-        )
+    recommendations[
+        "purpose_score"
+    ] = recommendations.apply(
+        purpose_score,
+        axis=1
     )
 
-    # Priority keywords
+    # --------------------------------------------------------
+    # PRIORITY KEYWORDS
+    # --------------------------------------------------------
+
     priority_keywords = {
 
         "Price": [
@@ -449,17 +805,21 @@ def shopping_agent(
         ]
     }
 
-    selected_priority_keywords = priority_keywords.get(
-        priority,
-        []
+    selected_priority_keywords = (
+        priority_keywords.get(
+            priority,
+            []
+        )
     )
 
     def priority_score(row):
 
-        product_index = df_products.index[
-            df_products["product_id"]
-            == row["product_id"]
-        ][0]
+        product_index = (
+            df_products.index[
+                df_products["product_id"]
+                == row["product_id"]
+            ][0]
+        )
 
         feature_text = (
             df_products.iloc[
@@ -469,35 +829,56 @@ def shopping_agent(
 
         return sum(
             1
-            for keyword in selected_priority_keywords
+            for keyword
+            in selected_priority_keywords
             if keyword in feature_text
         )
 
-    recommendations["priority_score"] = (
-        recommendations.apply(
-            priority_score,
-            axis=1
+    recommendations[
+        "priority_score"
+    ] = recommendations.apply(
+        priority_score,
+        axis=1
+    )
+
+    # --------------------------------------------------------
+    # FINAL SMART SCORE
+    # --------------------------------------------------------
+
+    recommendations[
+        "smart_score"
+    ] = (
+
+        recommendations[
+            "recommendation_score"
+        ]
+
+        + recommendations[
+            "purpose_score"
+        ] * 0.5
+
+        + recommendations[
+            "priority_score"
+        ] * 0.5
+    )
+
+    recommendations = (
+        recommendations.sort_values(
+            by="smart_score",
+            ascending=False
         )
     )
 
-    # Final SmartCart score
-    recommendations["smart_score"] = (
-        recommendations["recommendation_score"]
-        + recommendations["purpose_score"] * 0.5
-        + recommendations["priority_score"] * 0.5
+    recommendations = (
+        recommendations.head(top_n)
     )
-
-    recommendations = recommendations.sort_values(
-        by="smart_score",
-        ascending=False
-    )
-
-    recommendations = recommendations.head(top_n)
 
     if len(recommendations) == 0:
 
         return (
+
             recommendations,
+
             "No products matched your current "
             "category and budget. Try increasing "
             "your budget or choosing another category."
@@ -510,7 +891,10 @@ def shopping_agent(
         f"and budget."
     )
 
-    return recommendations, response
+    return (
+        recommendations,
+        response
+    )
 
 
 # ============================================================
@@ -533,10 +917,6 @@ home_tab, learn_tab, activity_tab, help_tab = st.tabs(
 
 with home_tab:
 
-    # --------------------------------------------------------
-    # HERO SECTION
-    # --------------------------------------------------------
-
     st.title("🛒 SmartCart AI")
 
     st.subheader(
@@ -544,27 +924,27 @@ with home_tab:
     )
 
     st.write(
-        "Find products that fit your needs, preferences "
-        "and budget using personalized machine learning "
-        "recommendations."
+        "Find products that fit your needs, "
+        "preferences and budget using personalized "
+        "machine learning recommendations."
     )
 
     st.divider()
 
-    # --------------------------------------------------------
-    # SECTION 1
-    # --------------------------------------------------------
-
-    st.header("👤 Tell us about your shopping needs")
+    st.header(
+        "👤 Tell us about your shopping needs"
+    )
 
     st.write(
-        "SmartCart AI will use these preferences to "
-        "personalize your recommendations."
+        "SmartCart AI will use these preferences "
+        "to personalize your recommendations."
     )
 
     st.write("")
 
-    # User + Category
+    # --------------------------------------------------------
+    # USER + CATEGORY
+    # --------------------------------------------------------
 
     col1, col2 = st.columns(2)
 
@@ -598,7 +978,9 @@ with home_tab:
 
     st.write("")
 
-    # Purpose + Priority
+    # --------------------------------------------------------
+    # PURPOSE + PRIORITY
+    # --------------------------------------------------------
 
     col1, col2 = st.columns(2)
 
@@ -631,7 +1013,9 @@ with home_tab:
 
     st.write("")
 
-    # Budget + Number
+    # --------------------------------------------------------
+    # BUDGET + NUMBER OF RECOMMENDATIONS
+    # --------------------------------------------------------
 
     col1, col2 = st.columns(2)
 
@@ -640,7 +1024,7 @@ with home_tab:
         budget = st.slider(
             "💰 Maximum Budget (₹)",
             min_value=1000,
-            max_value=60000,
+            max_value=125000,
             value=60000,
             step=1000
         )
@@ -659,14 +1043,15 @@ with home_tab:
         )
 
         st.caption(
-            f"SmartCart AI will show {top_n} recommendation(s)."
+            f"SmartCart AI will show "
+            f"{top_n} recommendation(s)."
         )
 
     st.write("")
     st.write("")
 
     # --------------------------------------------------------
-    # BIG ACTION BUTTON
+    # RECOMMENDATION BUTTON
     # --------------------------------------------------------
 
     if st.button(
@@ -685,43 +1070,57 @@ with home_tab:
             )
         )
 
-        st.session_state["recommendations"] = (
-            recommendations
-        )
+        st.session_state[
+            "recommendations"
+        ] = recommendations
 
-        st.session_state["recommendation_user"] = (
-            user_id
-        )
+        st.session_state[
+            "recommendation_user"
+        ] = user_id
 
-        st.session_state["purpose"] = purpose
+        st.session_state[
+            "purpose"
+        ] = purpose
 
-        st.session_state["priority"] = priority
+        st.session_state[
+            "priority"
+        ] = priority
 
     # --------------------------------------------------------
-    # RECOMMENDATIONS
+    # SHOW RESULTS
     # --------------------------------------------------------
 
     if "recommendations" in st.session_state:
 
-        recommendations = st.session_state[
-            "recommendations"
-        ]
+        recommendations = (
+            st.session_state[
+                "recommendations"
+            ]
+        )
 
-        recommendation_user = st.session_state[
-            "recommendation_user"
-        ]
+        recommendation_user = (
+            st.session_state[
+                "recommendation_user"
+            ]
+        )
 
-        selected_purpose = st.session_state[
-            "purpose"
-        ]
+        selected_purpose = (
+            st.session_state[
+                "purpose"
+            ]
+        )
 
-        selected_priority = st.session_state[
-            "priority"
-        ]
+        selected_priority = (
+            st.session_state[
+                "priority"
+            ]
+        )
 
         st.divider()
 
-        st.header("✨ Your AI Recommendations")
+        st.header(
+            "✨ Your AI Recommendations"
+        )
 
         st.info(
             f"🤖 SmartCart AI considered your "
@@ -741,7 +1140,7 @@ with home_tab:
         else:
 
             # ------------------------------------------------
-            # PRODUCT RESULTS
+            # PRODUCT CARDS
             # ------------------------------------------------
 
             for number, (_, product) in enumerate(
@@ -791,7 +1190,9 @@ with home_tab:
                         )
                     )
 
-                    st.write(explanation)
+                    st.write(
+                        explanation
+                    )
 
                     st.write(
                         f"🎯 **Shopping Purpose:** "
@@ -816,7 +1217,7 @@ with home_tab:
                 st.divider()
 
             # ------------------------------------------------
-            # COMPARE PRODUCTS
+            # PRODUCT COMPARISON
             # ------------------------------------------------
 
             if len(recommendations) >= 2:
@@ -837,19 +1238,25 @@ with home_tab:
                     ].tolist()
                 )
 
-                selected_products = st.multiselect(
-                    "🛍️ Choose products to compare",
-                    product_options,
-                    default=product_options[:2]
+                selected_products = (
+                    st.multiselect(
+                        "🛍️ Choose products to compare",
+                        product_options,
+                        default=product_options[:2]
+                    )
                 )
 
                 if len(selected_products) >= 2:
 
-                    comparison = recommendations[
+                    comparison = (
                         recommendations[
-                            "product_name"
-                        ].isin(selected_products)
-                    ].copy()
+                            recommendations[
+                                "product_name"
+                            ].isin(
+                                selected_products
+                            )
+                        ].copy()
+                    )
 
                     comparison = comparison[
                         [
@@ -879,17 +1286,19 @@ with home_tab:
                         hide_index=True
                     )
 
-                    best_product = comparison.loc[
-                        comparison[
-                            "SmartCart Score"
-                        ].idxmax()
-                    ]
+                    best_product = (
+                        comparison.loc[
+                            comparison[
+                                "SmartCart Score"
+                            ].idxmax()
+                        ]
+                    )
 
                     st.success(
                         f"🤖 **SmartCart AI Verdict:** "
                         f"{best_product['Product']} "
-                        f"is the strongest match for your "
-                        f"selected requirements."
+                        f"is the strongest match for "
+                        f"your selected requirements."
                     )
 
                 else:
@@ -906,7 +1315,9 @@ with home_tab:
 
 with learn_tab:
 
-    st.title("📚 How SmartCart AI Works")
+    st.title(
+        "📚 How SmartCart AI Works"
+    )
 
     st.write(
         "SmartCart AI combines machine learning, "
@@ -932,9 +1343,17 @@ with learn_tab:
             "Different actions have different importance:"
         )
 
-        st.write("👀 Viewed → Weight 1")
-        st.write("❤️ Liked → Weight 2")
-        st.write("🛒 Purchased → Weight 3")
+        st.write(
+            "👀 Viewed → Weight 1"
+        )
+
+        st.write(
+            "❤️ Liked → Weight 2"
+        )
+
+        st.write(
+            "🛒 Purchased → Weight 3"
+        )
 
     with st.expander(
         "3️⃣ TF-IDF"
@@ -1010,7 +1429,9 @@ with learn_tab:
 
 with activity_tab:
 
-    st.title("📊 My Shopping Activity")
+    st.title(
+        "📊 My Shopping Activity"
+    )
 
     st.write(
         "View the previous interactions used by "
@@ -1030,20 +1451,25 @@ with activity_tab:
     )
 
     user_activity = df_user_products[
-        df_user_products["user_id"] == activity_user
+        df_user_products["user_id"]
+        == activity_user
     ]
 
-    total_interactions = len(user_activity)
+    total_interactions = len(
+        user_activity
+    )
 
     purchases = len(
         user_activity[
-            user_activity["interaction"] == "purchased"
+            user_activity["interaction"]
+            == "purchased"
         ]
     )
 
     likes = len(
         user_activity[
-            user_activity["interaction"] == "liked"
+            user_activity["interaction"]
+            == "liked"
         ]
     )
 
@@ -1103,10 +1529,13 @@ with activity_tab:
 
 with help_tab:
 
-    st.title("❓ Help & Support")
+    st.title(
+        "❓ Help & Support"
+    )
 
     st.write(
-        "Find answers to common questions about SmartCart AI."
+        "Find answers to common questions "
+        "about SmartCart AI."
     )
 
     with st.expander(
@@ -1155,9 +1584,10 @@ with help_tab:
     ):
 
         st.write(
-            "Yes. Select two or three recommended products "
-            "and SmartCart AI will create a comparison "
-            "table and provide an AI verdict."
+            "Yes. Select two or three recommended "
+            "products and SmartCart AI will create "
+            "a comparison table and provide an "
+            "AI verdict."
         )
 
     with st.expander(
@@ -1165,8 +1595,9 @@ with help_tab:
     ):
 
         st.write(
-            "No. This academic prototype uses simulated "
-            "users, products and shopping interactions."
+            "No. This academic prototype uses "
+            "simulated users, products and "
+            "shopping interactions."
         )
 
     st.divider()
