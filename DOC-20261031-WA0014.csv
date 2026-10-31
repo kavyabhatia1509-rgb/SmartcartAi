@@ -1,0 +1,31 @@
+product_id,product_name,category,brand,price,features
+P001,Acer Aspire 5,Laptop,Acer,55000,laptop programming student performance
+P002,Lenovo IdeaPad Slim 5,Laptop,Lenovo,58000,laptop programming student productivity
+P003,HP Pavilion 14,Laptop,HP,62000,laptop programming office productivity
+P004,ASUS VivoBook 15,Laptop,ASUS,52000,laptop student office lightweight
+P005,Dell Inspiron 15,Laptop,Dell,60000,laptop programming business performance
+P006,Samsung Galaxy A55,Smartphone,Samsung,40000,smartphone camera display performance
+P007,OnePlus Nord CE,Smartphone,OnePlus,25000,smartphone 5g performance battery
+P008,Google Pixel 8a,Smartphone,Google,45000,smartphone camera ai performance
+P009,Redmi Note 14,Smartphone,Redmi,18000,smartphone budget battery display
+P010,Samsung Galaxy S24 FE,Smartphone,Samsung,55000,smartphone camera performance display
+P011,Sony WH-CH720N,Headphones,Sony,8500,headphones wireless noise cancellation music
+P012,JBL Tune 770NC,Headphones,JBL,6500,headphones wireless noise cancellation bass
+P013,Boat Rockerz 550,Headphones,Boat,3500,headphones wireless gaming music bass
+P014,Anker Soundcore Q20i,Headphones,Anker,4500,headphones wireless noise cancellation music
+P015,Realme Buds Wireless,Headphones,Realme,2500,headphones wireless music lightweight
+P016,Redragon K552 Keyboard,Keyboard,Redragon,2500,keyboard mechanical gaming programming
+P017,Logitech K380 Keyboard,Keyboard,Logitech,3500,keyboard wireless compact productivity
+P018,HP Wireless Keyboard,Keyboard,HP,1800,keyboard wireless office productivity
+P019,Cosmic Byte Mechanical Keyboard,Keyboard,Cosmic Byte,3000,keyboard mechanical gaming rgb
+P020,Dell Multimedia Keyboard,Keyboard,Dell,1500,keyboard office multimedia productivity
+P021,Logitech M331 Mouse,Mouse,Logitech,1200,mouse wireless office productivity
+P022,HP Wireless Mouse,Mouse,HP,1000,mouse wireless office laptop
+P023,Dell MS116 Mouse,Mouse,Dell,800,mouse wired office productivity
+P024,Redragon Gaming Mouse,Mouse,Redragon,1800,mouse gaming performance rgb
+P025,Lenovo Wireless Mouse,Mouse,Lenovo,900,mouse wireless laptop productivity
+P026,LG 24-inch Monitor,Monitor,LG,12000,monitor display office productivity
+P027,Samsung 24-inch Monitor,Monitor,Samsung,14000,monitor display office entertainment
+P028,Acer Nitro Monitor,Monitor,Acer,18000,monitor gaming display performance
+P029,Lenovo 27-inch Monitor,Monitor,Lenovo,16000,monitor large display productivity
+P030,Dell 27-inch Monitor,Monitor,Dell,20000,monitor large display office productivity

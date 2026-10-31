@@ -1,0 +1,16 @@
+user_id,product_id,interaction
+U001,P001,purchased
+U001,P003,liked
+U001,P016,liked
+U002,P006,purchased
+U002,P011,liked
+U002,P012,viewed
+U003,P021,purchased
+U003,P022,liked
+U003,P025,liked
+U004,P026,purchased
+U004,P027,liked
+U004,P029,viewed
+U005,P002,liked
+U005,P004,viewed
+U005,P018,liked
