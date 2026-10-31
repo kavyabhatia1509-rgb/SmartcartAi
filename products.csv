@@ -1,31 +1,101 @@
 product_id,product_name,category,brand,price,features
-P001,Acer Aspire 5,Laptop,Acer,55000,laptop programming student performance
-P002,Lenovo IdeaPad Slim 5,Laptop,Lenovo,58000,laptop programming student productivity
-P003,HP Pavilion 14,Laptop,HP,62000,laptop programming office productivity
-P004,ASUS VivoBook 15,Laptop,ASUS,52000,laptop student office lightweight
-P005,Dell Inspiron 15,Laptop,Dell,60000,laptop programming business performance
-P006,Samsung Galaxy A55,Smartphone,Samsung,40000,smartphone camera display performance
-P007,OnePlus Nord CE,Smartphone,OnePlus,25000,smartphone 5g performance battery
-P008,Google Pixel 8a,Smartphone,Google,45000,smartphone camera ai performance
-P009,Redmi Note 14,Smartphone,Redmi,18000,smartphone budget battery display
-P010,Samsung Galaxy S24 FE,Smartphone,Samsung,55000,smartphone camera performance display
-P011,Sony WH-CH720N,Headphones,Sony,8500,headphones wireless noise cancellation music
-P012,JBL Tune 770NC,Headphones,JBL,6500,headphones wireless noise cancellation bass
-P013,Boat Rockerz 550,Headphones,Boat,3500,headphones wireless gaming music bass
-P014,Anker Soundcore Q20i,Headphones,Anker,4500,headphones wireless noise cancellation music
-P015,Realme Buds Wireless,Headphones,Realme,2500,headphones wireless music lightweight
-P016,Redragon K552 Keyboard,Keyboard,Redragon,2500,keyboard mechanical gaming programming
-P017,Logitech K380 Keyboard,Keyboard,Logitech,3500,keyboard wireless compact productivity
-P018,HP Wireless Keyboard,Keyboard,HP,1800,keyboard wireless office productivity
-P019,Cosmic Byte Mechanical Keyboard,Keyboard,Cosmic Byte,3000,keyboard mechanical gaming rgb
-P020,Dell Multimedia Keyboard,Keyboard,Dell,1500,keyboard office multimedia productivity
-P021,Logitech M331 Mouse,Mouse,Logitech,1200,mouse wireless office productivity
-P022,HP Wireless Mouse,Mouse,HP,1000,mouse wireless office laptop
-P023,Dell MS116 Mouse,Mouse,Dell,800,mouse wired office productivity
-P024,Redragon Gaming Mouse,Mouse,Redragon,1800,mouse gaming performance rgb
-P025,Lenovo Wireless Mouse,Mouse,Lenovo,900,mouse wireless laptop productivity
-P026,LG 24-inch Monitor,Monitor,LG,12000,monitor display office productivity
-P027,Samsung 24-inch Monitor,Monitor,Samsung,14000,monitor display office entertainment
-P028,Acer Nitro Monitor,Monitor,Acer,18000,monitor gaming display performance
-P029,Lenovo 27-inch Monitor,Monitor,Lenovo,16000,monitor large display productivity
-P030,Dell 27-inch Monitor,Monitor,Dell,20000,monitor large display office productivity
+P001,Acer Aspire 5,Laptop,Acer,55000,laptop programming student performance productivity
+P002,Lenovo IdeaPad Slim 5,Laptop,Lenovo,58000,laptop programming student productivity lightweight
+P003,HP Pavilion 14,Laptop,HP,62000,laptop programming office productivity student
+P004,ASUS VivoBook 15,Laptop,ASUS,52000,laptop student office lightweight productivity
+P005,Dell Inspiron 15,Laptop,Dell,60000,laptop programming business performance productivity
+P006,Acer Aspire 7,Laptop,Acer,65000,laptop programming performance gaming student
+P007,Lenovo IdeaPad 3,Laptop,Lenovo,48000,laptop student office productivity budget
+P008,HP 15s,Laptop,HP,45000,laptop student office productivity lightweight
+P009,ASUS TUF Gaming F15,Laptop,ASUS,72000,laptop gaming performance graphics mechanical
+P010,Dell Vostro 15,Laptop,Dell,58000,laptop business office productivity performance
+P011,Lenovo ThinkBook 15,Laptop,Lenovo,62000,laptop business programming productivity performance
+P012,HP Victus 15,Laptop,HP,68000,laptop gaming performance graphics student
+P013,Acer Swift Go 14,Laptop,Acer,70000,laptop student programming lightweight productivity
+P014,ASUS ZenBook 14,Laptop,ASUS,75000,laptop premium student office lightweight productivity
+P015,Dell Inspiron 14,Laptop,Dell,57000,laptop programming office performance lightweight
+P016,Lenovo LOQ Gaming,Laptop,Lenovo,78000,laptop gaming programming performance graphics
+P017,HP Envy x360,Laptop,HP,82000,laptop student office convertible productivity
+P018,Acer Nitro V,Laptop,Acer,75000,laptop gaming performance graphics programming
+P019,ASUS ROG Strix G16,Laptop,ASUS,125000,laptop gaming performance graphics high performance
+P020,Dell G15 Gaming,Laptop,Dell,85000,laptop gaming performance graphics productivity
+P021,Samsung Galaxy A55,Smartphone,Samsung,40000,smartphone camera display performance battery
+P022,OnePlus Nord CE,Smartphone,OnePlus,25000,smartphone 5g performance battery productivity
+P023,Google Pixel 8a,Smartphone,Google,45000,smartphone camera ai performance display
+P024,Redmi Note 14,Smartphone,Redmi,18000,smartphone budget battery display performance
+P025,Samsung Galaxy S24 FE,Smartphone,Samsung,55000,smartphone camera performance display premium
+P026,OnePlus 12R,Smartphone,OnePlus,42000,smartphone performance gaming battery 5g
+P027,iPhone 15,Smartphone,Apple,65000,smartphone camera performance premium ios
+P028,Google Pixel 9,Smartphone,Google,70000,smartphone camera ai performance display premium
+P029,Samsung Galaxy S23,Smartphone,Samsung,52000,smartphone camera performance display premium
+P030,Nothing Phone 2a,Smartphone,Nothing,24000,smartphone budget camera display battery
+P031,Realme 13 Pro,Smartphone,Realme,28000,smartphone camera portrait battery performance
+P032,Vivo V40,Smartphone,Vivo,35000,smartphone camera display battery performance
+P033,Oppo Reno 12,Smartphone,Oppo,32000,smartphone camera portrait performance battery
+P034,Motorola Edge 50,Smartphone,Motorola,30000,smartphone camera performance battery 5g
+P035,Redmi Note 13 Pro,Smartphone,Redmi,22000,smartphone camera display performance budget
+P036,OnePlus Nord 4,Smartphone,OnePlus,30000,smartphone performance battery 5g productivity
+P037,Samsung Galaxy A35,Smartphone,Samsung,27000,smartphone camera battery display 5g
+P038,iQOO Neo 9,Smartphone,iQOO,36000,smartphone gaming performance battery 5g
+P039,Realme GT 6,Smartphone,Realme,42000,smartphone gaming performance display battery
+P040,Nothing Phone 2,Smartphone,Nothing,40000,smartphone camera performance display premium
+P041,Sony WH-CH720N,Headphones,Sony,8500,headphones wireless noise cancellation music
+P042,JBL Tune 770NC,Headphones,JBL,6500,headphones wireless noise cancellation bass
+P043,Boat Rockerz 550,Headphones,Boat,3500,headphones wireless gaming music bass
+P044,Anker Soundcore Q20i,Headphones,Anker,4500,headphones wireless noise cancellation music
+P045,Realme Buds Wireless,Headphones,Realme,2500,headphones wireless music lightweight
+P046,Sony WH-1000XM5,Headphones,Sony,28000,headphones premium wireless noise cancellation music
+P047,JBL Live 660NC,Headphones,JBL,12000,headphones wireless noise cancellation music premium
+P048,Boat Nirvana 751,Headphones,Boat,5500,headphones wireless noise cancellation bass music
+P049,Sennheiser HD 450BT,Headphones,Sennheiser,11000,headphones wireless music audio premium
+P050,Anker Soundcore Q30,Headphones,Anker,8000,headphones wireless noise cancellation bass
+P051,OnePlus Bullets Z2,Headphones,OnePlus,2000,headphones wireless music lightweight battery
+P052,Noise Air Buds Pro,Headphones,Noise,3500,headphones wireless noise cancellation music
+P053,JBL Tune 760NC,Headphones,JBL,7500,headphones wireless noise cancellation bass music
+P054,Skullcandy Crusher Evo,Headphones,Skullcandy,14000,headphones wireless bass music gaming
+P055,Sony WH-XB910N,Headphones,Sony,18000,headphones wireless noise cancellation bass premium
+P056,Redragon K552 Keyboard,Keyboard,Redragon,2500,keyboard mechanical gaming programming rgb
+P057,Logitech K380 Keyboard,Keyboard,Logitech,3500,keyboard wireless compact productivity
+P058,HP Wireless Keyboard,Keyboard,HP,1800,keyboard wireless office productivity
+P059,Cosmic Byte Mechanical Keyboard,Keyboard,Cosmic Byte,3000,keyboard mechanical gaming rgb programming
+P060,Dell Multimedia Keyboard,Keyboard,Dell,1500,keyboard office multimedia productivity
+P061,Logitech K480 Keyboard,Keyboard,Logitech,3000,keyboard wireless compact productivity office
+P062,HP K1500 Keyboard,Keyboard,HP,900,keyboard office wired productivity typing
+P063,Redragon K617 Keyboard,Keyboard,Redragon,2200,keyboard mechanical compact gaming rgb
+P064,Logitech MX Keys Mini,Keyboard,Logitech,8500,keyboard wireless premium productivity typing
+P065,Keychron K2 Keyboard,Keyboard,Keychron,7500,keyboard mechanical wireless gaming programming
+P066,Portronics Key5,Keyboard,Portronics,1800,keyboard wireless office productivity compact
+P067,Dell KB216 Keyboard,Keyboard,Dell,1200,keyboard office multimedia typing productivity
+P068,HP 330 Wireless Keyboard,Keyboard,HP,2500,keyboard wireless office productivity typing
+P069,Zebronics Zeb-Max Pro,Keyboard,Zebronics,4000,keyboard mechanical gaming rgb performance
+P070,Ant Esports MK3400,Keyboard,Ant Esports,2000,keyboard mechanical gaming programming rgb
+P071,Logitech M331 Mouse,Mouse,Logitech,1200,mouse wireless office productivity
+P072,HP Wireless Mouse,Mouse,HP,1000,mouse wireless office laptop
+P073,Dell MS116 Mouse,Mouse,Dell,800,mouse wired office productivity
+P074,Redragon Gaming Mouse,Mouse,Redragon,1800,mouse gaming performance rgb
+P075,Lenovo Wireless Mouse,Mouse,Lenovo,900,mouse wireless laptop productivity
+P076,Logitech M185 Mouse,Mouse,Logitech,1000,mouse wireless office laptop productivity
+P077,HP X1000 Mouse,Mouse,HP,700,mouse wireless office productivity budget
+P078,Dell WM126 Mouse,Mouse,Dell,900,mouse wireless office laptop productivity
+P079,Logitech G102 Gaming Mouse,Mouse,Logitech,1800,mouse gaming performance rgb programming
+P080,Redragon M711 Mouse,Mouse,Redragon,2200,mouse gaming performance rgb precision
+P081,Razer DeathAdder Essential,Mouse,Razer,2500,mouse gaming performance ergonomic
+P082,Logitech MX Master 3S,Mouse,Logitech,8500,mouse wireless premium productivity office
+P083,HP 150 Wireless Mouse,Mouse,HP,1300,mouse wireless office productivity laptop
+P084,Portronics Toad Mouse,Mouse,Portronics,800,mouse wireless office productivity compact
+P085,Zebronics Zeb Transformer,Mouse,Zebronics,1500,mouse gaming performance rgb precision
+P086,LG 24-inch Monitor,Monitor,LG,12000,monitor display office productivity
+P087,Samsung 24-inch Monitor,Monitor,Samsung,14000,monitor display office entertainment
+P088,Acer Nitro Monitor,Monitor,Acer,18000,monitor gaming display performance
+P089,Lenovo 27-inch Monitor,Monitor,Lenovo,16000,monitor large display productivity
+P090,Dell 27-inch Monitor,Monitor,Dell,20000,monitor large display office productivity
+P091,LG UltraGear Gaming Monitor,Monitor,LG,28000,monitor gaming display performance high refresh
+P092,Samsung Odyssey G3,Monitor,Samsung,22000,monitor gaming display performance high refresh
+P093,Acer 24-inch IPS Monitor,Monitor,Acer,14000,monitor display office productivity ips
+P094,BenQ 24-inch Monitor,Monitor,BenQ,15000,monitor display office productivity color
+P095,ASUS TUF Gaming Monitor,Monitor,ASUS,25000,monitor gaming display performance high refresh
+P096,Dell 24-inch Monitor,Monitor,Dell,15000,monitor display office productivity
+P097,HP 24-inch Monitor,Monitor,HP,13000,monitor display office productivity
+P098,Lenovo 24-inch Monitor,Monitor,Lenovo,12500,monitor display office productivity
+P099,LG 27-inch IPS Monitor,Monitor,LG,19000,monitor large display productivity ips
+P100,Samsung 27-inch Monitor,Monitor,Samsung,18000,monitor large display office entertainment
