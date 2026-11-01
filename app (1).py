@@ -271,6 +271,21 @@ def shopping_agent(
     ]
 
     # --------------------------------------------------------
+    # NO MATCHING PRODUCTS (stop early to avoid an error)
+    # --------------------------------------------------------
+
+    if len(recommendations) == 0:
+
+        return (
+
+            recommendations,
+
+            "No products matched your current "
+            "category and budget. Try increasing "
+            "your budget or choosing another category."
+        )
+
+    # --------------------------------------------------------
     # PURPOSE KEYWORDS
     # --------------------------------------------------------
 
